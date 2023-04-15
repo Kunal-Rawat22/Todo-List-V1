@@ -1,14 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static('Public'));
+
 let items = [];
+let workItems = [];
 
 app.get('/', (req, res) => {
     let today = new Date();
-    let currentDay = today.getDay();
     let option = {
         weekday: "long",
         day: "numeric",
@@ -16,30 +18,30 @@ app.get('/', (req, res) => {
         year: "numeric"
     }
     let day = today.toLocaleDateString("en-US", option);
-    console.log(day);
-    // if (currentDay === 0)
-    //     day = "Sunday";
-    // else if (currentDay === 1)
-    //     day = "Monday";
-    // else if (currentDay === 2)
-    //     day = "Tuesday";
-    // else if (currentDay === 3)
-    //     day = "Wednesday";
-    // else if (currentDay === 4)
-    //     day = "Thursday";
-    // else if (currentDay === 5)
-    //     day = "Friday";
-    // else
-    //     day = "Saturday";
-    
-    res.render("list3", { kindOfDay : day, listOfItems: items });
+    res.render("list4", { listTitle : day, listOfItems: items });
     res.send();
 })
+
 app.post('/', function (req, res) {
     let todoitem = req.body.todoitem;
-    items.push(todoitem);
-    res.redirect('/');
-  })
+    // console.log(req.body);
+    if (req.body.List === "Work")
+    {
+        workItems.push(todoitem);
+        res.redirect('/work');
+    }
+    else
+    {
+        items.push(todoitem);
+        res.redirect('/');
+    }
+})
+
+app.get('/work', function (req, res) {
+    res.render("list4", { listTitle: "Work", listOfItems: workItems });
+    res.send();
+});
+
 app.listen(3000, (req, res) => {
     console.log("Server Running in Post 3000");
 }
