@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO List</title>
+</head>
+<body>
+   <h1 style="color: purple"><%=kindOfDay%></h1>
+
+   <ul>
+    <li>Buy Food</li>
+    <li>Cook Food</li>
+    <li>Eat Food</li>
+    <%for(let i=0; i<listOfItems.length;i++){%>
+        <li><%=listOfItems[i]%></li>
+    <%}%>
+   </ul>
+   <form action="\" method="post">
+    <input type="text" value="" placeholder="Enter Your Next Task" name="todoitem">
+    <button type="submit">Confirm</button>
+   </form>
+</body>
+</html>
