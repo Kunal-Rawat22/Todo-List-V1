@@ -64,7 +64,7 @@ button {
   background-color: #A683E3;
   color: #fff;
   font-size: 30px;
-  padding-bottom: 6px;
+  padding-bottom: 2px;
   border-width: 0;
 }
 
@@ -93,4 +93,9 @@ footer {
   color: white;
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
+}
+
+.done
+{
+  text-decoration: line-through;
 }

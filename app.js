@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
     // else
     //     day = "Saturday";
     
-    res.render("list2", { kindOfDay : day, listOfItems: items });
+    res.render("list3", { kindOfDay : day, listOfItems: items });
     res.send();
 })
 app.post('/', function (req, res) {
